@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
     });
 
     mailTransport().sendMail({
-      from: "TrustLedgeremailverification@gmail.com",
+      from: "support@trustleger.com",
       to: newUser.email,
       subject: "Verify Your Email Account",
       html: confirmVerification(
