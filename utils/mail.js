@@ -11,11 +11,11 @@ exports.generateOTP = () => {
 
 exports.mailTransport = () => {
   return nodemailer.createTransport({
-    host: "sandbox.smtp.mailtrap.io",
-    port: 2525,
+    host: "mail.trustledger.com",
+    port: 587,
     auth: {
-      user: "b8a2ba1a05b14a",
-      pass: "48b61489156df6",
+      user: "support@trustleger.com",
+      pass: "Trustleger14",
     },
   });
 };
