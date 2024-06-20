@@ -14,13 +14,13 @@ router.post("/", async (req, res) => {
   const user = await User.findOne({ email: email });
 
   if (!user) {
-    return res.status(404).json({ error: "User doesn't exist" });
+    return res.status(404).json({ data: "User doesn't exist" });
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
-    return res.status(401).json({ error: "Invalid credentials" });
+    return res.status(401).json({ data: "Invalid credentials" });
   }
 
   const role = user.role;
