@@ -17,21 +17,15 @@ const UserDetailsSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    pin: {
-      type: String,
-      required: false,
-      minlength: 4,
-      maxlength: 4,
-    },
     role: {
       type: String,
       enum: ["user", "admin"],
       default: "user",
     },
-    verified: {
-      type: Boolean,
-      default: false,
-      required: true,
+    status: {
+      type: String,
+      enum: ["active", "blocked"],
+      default: "active",
     },
     dateOfBirth: {
       type: String,
@@ -47,12 +41,6 @@ const UserDetailsSchema = new mongoose.Schema(
     securityPhrase: {
       type: [String],
       required: false,
-      // validate: {
-      //   validator: function (v) {
-      //     return Array.isArray(v) && v.length === 12;
-      //   },
-      //   message: "Security phrase must be an array of 12 words",
-      // },
     },
     staking: [Staking.schema],
     bitcoin: { type: Number, default: 0 }, // BTC
