@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
     if (typeof email === "string" && email.trim() !== "") {
       updateData.email = email.trim();
     }
-    if (typeof balance === number && balance.trim() !== "") {
+    if (typeof balance === "string" && balance.trim() !== "") {
       updateData.balance = balance.trim();
     }
     if (typeof status === "string" && status.trim() !== "") {
