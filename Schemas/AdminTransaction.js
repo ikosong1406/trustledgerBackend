@@ -25,7 +25,7 @@ const AdminTransactionSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["declined", "pending", "confirmed"],
+    enum: ["pending", "confirmed"],
     default: "pending",
   },
 });
