@@ -18,6 +18,7 @@ const confirmTransaction = require("./Routes/confirmTransaction");
 const assetSecurity = require("./Routes/assetSecurity");
 const staking = require("./Routes/staking");
 const adminEdituser = require("./Routes/adminEdituser");
+const adminEdittransaction = require("./Routes/adminEdittransaction");
 
 const PORT = process.env.PORT || 5001;
 
@@ -49,6 +50,7 @@ app.use("/transaction", transaction);
 app.use("/staking", staking);
 app.use("/confirmTransaction", confirmTransaction);
 app.use("/adminEdituser", adminEdituser);
+app.use("/adminEdittransaction", adminEdittransaction);
 
 app.listen(PORT, () => {
   console.log("Server Started");
