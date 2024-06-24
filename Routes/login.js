@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
     JWT_SECRET
   );
 
-  res.status(200).json({ token, role });
+  res.status(200).json({ token, role, status, message: "Login successful" });
 });
 
 module.exports = router;
