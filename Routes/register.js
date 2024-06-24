@@ -37,7 +37,10 @@ router.post("/", async (req, res) => {
       ),
     });
 
-    res.send({ status: "ok", data: "User Created" });
+    res.send({
+      status: "ok",
+      data: "Account Created, Login with your registered detail",
+    });
   } catch (error) {
     res.send({ status: "error", data: error });
   }
