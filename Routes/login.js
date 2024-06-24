@@ -25,7 +25,12 @@ router.post("/", async (req, res) => {
 
   const role = user.role;
 
-  const token = jwt.sign({ email: user.email, role: role }, JWT_SECRET);
+  const status = user.status;
+
+  const token = jwt.sign(
+    { email: user.email, role: role, status: status },
+    JWT_SECRET
+  );
 
   res.status(200).json({ token, role });
 });
