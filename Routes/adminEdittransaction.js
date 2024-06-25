@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 
-const Transaction = require("../Schemas/AdminTransaction");
+const Transaction = require("../Schemas/TransactionDetails");
 
 router.post("/", async (req, res) => {
   try {

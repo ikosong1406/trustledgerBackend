@@ -14,7 +14,6 @@ const forgotPassword = require("./Routes/forgotPassword");
 const resetPassword = require("./Routes/resetPassword");
 const { isResetTokenValid } = require("./utils/user");
 const transaction = require("./Routes/transaction");
-const confirmTransaction = require("./Routes/confirmTransaction");
 const assetSecurity = require("./Routes/assetSecurity");
 const staking = require("./Routes/staking");
 const adminEdituser = require("./Routes/adminEdituser");
@@ -48,7 +47,6 @@ app.use("/forgotPassword", forgotPassword);
 app.use("/resetPassword", isResetTokenValid, resetPassword);
 app.use("/transaction", transaction);
 app.use("/staking", staking);
-app.use("/confirmTransaction", confirmTransaction);
 app.use("/adminEdituser", adminEdituser);
 app.use("/adminEdittransaction", adminEdittransaction);
 
