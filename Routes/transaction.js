@@ -25,15 +25,6 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ error: "Invalid amount" });
     }
 
-    // Create admin transaction
-    // const adminTransaction = await AdminTransaction.create({
-    //   userId,
-    //   amount,
-    //   type,
-    //   walletAddress,
-    //   method,
-    // });
-
     const userTransaction = await UserTransaction.create({
       userId,
       amount,
