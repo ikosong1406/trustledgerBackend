@@ -19,6 +19,8 @@ const staking = require("./Routes/staking");
 const adminEdituser = require("./Routes/adminEdituser");
 const adminEdittransaction = require("./Routes/adminEdittransaction");
 const userTransactions = require("./Routes/userTransaction");
+const editMethod = require("./Routes/editMethod");
+const allMethod = require("./Routes/allMethod");
 
 const PORT = process.env.PORT || 5001;
 
@@ -51,6 +53,8 @@ app.use("/staking", staking);
 app.use("/adminEdituser", adminEdituser);
 app.use("/adminEdittransaction", adminEdittransaction);
 app.use("/userTransactions", userTransactions);
+app.use("/editMethod", editMethod);
+app.use("/allMethod", allMethod);
 
 app.listen(PORT, () => {
   console.log("Server Started");
