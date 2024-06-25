@@ -3,15 +3,25 @@ const router = express.Router();
 const Method = require("../Schemas/Method");
 
 router.put("/", async (req, res) => {
-  const { id } = req.params;
-  const { name, network, walletAddress, type } = req.body;
   try {
-    const method = await Method.findByIdAndUpdate(
-      id,
-      { name, network, walletAddress, type },
-      { new: true }
+    const { id, name, network, walletAddress } = req.body;
+    const updateData = {};
+    if (typeof name === "string" && name.trim() !== "") {
+      updateData.name = name.trim();
+    }
+    if (typeof network === "string" && network.trim() !== "") {
+      updateData.network = network.trim();
+    }
+    if (typeof walletAddress === "string" && walletAddress.trim() !== "") {
+      updateData.walletAddress = walletAddress.trim();
+    }
+
+    const updatedMethod = await Method.findOneAndUpdate(
+      { _id: id },
+      updateData,
+      { new: true } // Return the updated document
     );
-    res.json(method);
+    res.json({ message: "Deposit Method updated successfully", status: "ok" });
   } catch (error) {
     res.status(500).json({ error: "Failed to update method" });
   }
