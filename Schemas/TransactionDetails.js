@@ -2,22 +2,26 @@
 const mongoose = require("mongoose");
 
 const transactionSchema = new mongoose.Schema({
-  type: {
-    type: String,
-    enum: ["Deposit", "Withdrawal", "Buy", "Sell"],
-    required: true,
-  },
   amount: {
     type: Number,
+    required: true,
   },
-  coinName: {
+  walletAddress: {
     type: String,
   },
-  quantity: {
+  type: {
     type: String,
+    enum: ["deposit", "withdrawal"],
+    required: true,
   },
-  price: {
+  method: {
     type: String,
+    enum: ["tether", "bitcoin", "paypal"],
+  },
+  status: {
+    type: String,
+    enum: ["pending", "confirmed"],
+    default: "pending",
   },
   date: {
     type: Date,

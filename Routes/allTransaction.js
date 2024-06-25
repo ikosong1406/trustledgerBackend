@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const AdminTransaction = require("../Schemas/AdminTransaction");
+const AdminTransaction = require("../Schemas/TransactionDetails");
 
 router.get("/", async (req, res) => {
   try {

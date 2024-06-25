@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 require("../Schemas/UserDetails");
 
 const User = mongoose.model("UserInfo");
-const AdminTransaction = require("../Schemas/AdminTransaction");
+// const AdminTransaction = require("../Schemas/AdminTransaction");
+const UserTransaction = require("../Schemas/TransactionDetails");
 
 router.post("/", async (req, res) => {
   const { userId, amount, type, walletAddress, method } = req.body;
@@ -25,7 +26,15 @@ router.post("/", async (req, res) => {
     }
 
     // Create admin transaction
-    const adminTransaction = await AdminTransaction.create({
+    // const adminTransaction = await AdminTransaction.create({
+    //   userId,
+    //   amount,
+    //   type,
+    //   walletAddress,
+    //   method,
+    // });
+
+    const userTransaction = await UserTransaction.create({
       userId,
       amount,
       type,
@@ -35,7 +44,7 @@ router.post("/", async (req, res) => {
 
     res.json({
       message: "Transaction request sent for confirmation",
-      adminTransaction,
+      // adminTransaction,
     });
   } catch (error) {
     console.error("Error creating admin transaction:", error);
