@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const mongoose = require("mongoose");
 require("../Schemas/UserDetails");
 
 const User = mongoose.model("UserInfo");
@@ -20,3 +21,5 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
+
+module.exports = router;
