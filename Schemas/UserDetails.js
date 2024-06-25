@@ -48,7 +48,9 @@ const UserDetailsSchema = new mongoose.Schema(
     solana: { type: Number, default: 0 }, // SOL
     ripples: { type: Number, default: 0 }, // XRP
     stellar: { type: Number, default: 0 }, // DOGE
-    transactions: [Transaction.schema],
+    transactions: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Transaction" },
+    ],
   },
   {
     collection: "UserInfo",

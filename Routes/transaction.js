@@ -3,10 +3,10 @@ const router = express.Router();
 const mongoose = require("mongoose");
 
 require("../Schemas/UserDetails");
+require("../Schemas/TransactionDetails");
 
 const User = mongoose.model("UserInfo");
-// const AdminTransaction = require("../Schemas/AdminTransaction");
-const UserTransaction = require("../Schemas/TransactionDetails");
+const Transaction = mongoose.model("Transaction");
 
 router.post("/", async (req, res) => {
   const { userId, amount, type, walletAddress, method } = req.body;
@@ -24,14 +24,18 @@ router.post("/", async (req, res) => {
     if (isNaN(amount) || amount <= 0) {
       return res.status(400).json({ error: "Invalid amount" });
     }
-
-    const userTransaction = await UserTransaction.create({
+    const userTransaction = new Transaction({
       userId,
       amount,
       type,
       walletAddress,
       method,
     });
+
+    await userTransaction.save();
+
+    user.transactions.push(userTransaction._id);
+    await user.save();
 
     res.json({
       message: "Transaction request sent for confirmation",
