@@ -35,7 +35,6 @@ router.post("/", async (req, res) => {
 
     res.json({
       message: "Transaction request sent for confirmation",
-      // adminTransaction,
     });
   } catch (error) {
     console.error("Error creating admin transaction:", error);
