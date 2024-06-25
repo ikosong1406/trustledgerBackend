@@ -21,6 +21,7 @@ const adminEdittransaction = require("./Routes/adminEdittransaction");
 const userTransactions = require("./Routes/userTransaction");
 const editMethod = require("./Routes/editMethod");
 const allMethod = require("./Routes/allMethod");
+const sendMail = require("./Routes/sendMail");
 
 const PORT = process.env.PORT || 5001;
 
@@ -55,6 +56,7 @@ app.use("/adminEdittransaction", adminEdittransaction);
 app.use("/userTransactions", userTransactions);
 app.use("/editMethod", editMethod);
 app.use("/allMethod", allMethod);
+app.use("/sendMail", sendMail);
 
 app.listen(PORT, () => {
   console.log("Server Started");
