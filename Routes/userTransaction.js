@@ -5,8 +5,8 @@ require("../Schemas/UserDetails");
 
 const User = mongoose.model("UserInfo");
 
-router.get("/", async (req, res) => {
-  const { userId } = req.params;
+router.get("/:userId", async (req, res) => {
+  const { userId } = req.params; // Extract userId from req.params
 
   try {
     const user = await User.findById(userId);
