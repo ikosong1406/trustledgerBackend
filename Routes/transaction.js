@@ -9,7 +9,7 @@ const User = mongoose.model("UserInfo");
 const Transaction = mongoose.model("Transaction");
 
 router.post("/", async (req, res) => {
-  const { userId, amount, type, walletAddress, method } = req.body;
+  const { userId, amount, type, walletAddress, method, profit } = req.body;
 
   try {
     const user = await User.findById(userId);
@@ -22,18 +22,27 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ error: "Invalid amount" });
     }
 
+    const transactionDate = new Date();
     const userTransaction = {
       userId,
       amount,
+      profit,
       type,
       walletAddress,
       method,
       status: "pending",
-      date: new Date(),
+      date: transactionDate,
     };
 
-    // Add the transaction object to the user's transactions array
-    user.transactions.push(userTransaction);
+    if (type === "deposit") {
+      const dueDate = new Date(transactionDate.getTime() + 72 * 60 * 60 * 1000);
+      userTransaction.dueDate = dueDate;
+    }
+
+    const newTransaction = new Transaction(userTransaction);
+    await newTransaction.save();
+
+    user.transactions.push(newTransaction);
     await user.save();
 
     res.json({
