@@ -11,6 +11,9 @@ const transactionSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  profit: {
+    type: Number,
+  },
   walletAddress: {
     type: String,
   },
@@ -31,6 +34,9 @@ const transactionSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
+  },
+  dueDate: {
+    type: Date,
   },
 });
 
