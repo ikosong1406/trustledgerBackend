@@ -41,7 +41,7 @@ router.post("/", async (req, res) => {
 
     return res.status(200).json({
       status: "ok",
-      data: "Account Created, Login with your registered detail",
+      data: "Account Created, Login with your registered details",
     });
   } catch (error) {
     console.error("Error during user registration:", error); // Log the error for debugging
