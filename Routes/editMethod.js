@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Method = require("../Schemas/Method");
 
-router.put("/", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { id, name, network, walletAddress } = req.body;
     const updateData = {};
