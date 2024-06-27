@@ -29,17 +29,17 @@ router.post("/", async (req, res) => {
       role: role,
     });
 
-    mailTransport().sendMail({
-      from: "support@trustleger.com",
-      to: newUser.email,
-      subject: "Verify Your Email Account",
-      html: verifyCode(
-        "Congratulations! Your account has been successfully verified. You are now part of our amazing community",
-        "Start exploring all the features and functionalities of our app by clicking the button below:"
-      ),
-    });
+    // mailTransport().sendMail({
+    //   from: "support@trustleger.com",
+    //   to: newUser.email,
+    //   subject: "Verify Your Email Account",
+    //   html: verifyCode(
+    //     "Congratulations! Your account has been successfully verified. You are now part of our amazing community",
+    //     "Start exploring all the features and functionalities of our app by clicking the button below:"
+    //   ),
+    // });
 
-    return res.status(201).json({
+    return res.status(200).json({
       status: "ok",
       data: "Account Created, Login with your registered detail",
     });
