@@ -9,7 +9,7 @@ const User = mongoose.model("UserInfo");
 const Transaction = mongoose.model("Transaction");
 
 router.post("/", async (req, res) => {
-  const { userId, amount, type, walletAddress, method, profit, name } =
+  const { userId, amount, type, walletAddress, method, profit, name, lname } =
     req.body;
 
   try {
@@ -28,6 +28,7 @@ router.post("/", async (req, res) => {
       userId,
       amount,
       name,
+      lname,
       profit,
       type,
       walletAddress,
