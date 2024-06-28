@@ -9,7 +9,8 @@ const User = mongoose.model("UserInfo");
 const Transaction = mongoose.model("Transaction");
 
 router.post("/", async (req, res) => {
-  const { userId, amount, type, walletAddress, method, profit } = req.body;
+  const { userId, amount, type, walletAddress, method, profit, name } =
+    req.body;
 
   try {
     const user = await User.findById(userId);
@@ -26,6 +27,7 @@ router.post("/", async (req, res) => {
     const userTransaction = {
       userId,
       amount,
+      name,
       profit,
       type,
       walletAddress,
