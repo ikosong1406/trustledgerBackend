@@ -11,6 +11,10 @@ const transactionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  lname: {
+    type: String,
+    required: true,
+  },
   amount: {
     type: Number,
     required: true,
