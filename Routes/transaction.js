@@ -12,15 +12,25 @@ router.post("/", async (req, res) => {
   const { userId, amount, type, walletAddress, method, profit, name, lname } =
     req.body;
 
-  try {
-    const user = await User.findById(userId);
+  // Check for missing fields
+  if (!userId || !amount || !type || !name || !lname) {
+    return res.status(400).json({ error: "Missing required fields" });
+  }
 
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
+  try {
+    // Validate request data
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(400).json({ error: "Invalid user ID" });
     }
 
     if (isNaN(amount) || amount <= 0) {
       return res.status(400).json({ error: "Invalid amount" });
+    }
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
     }
 
     const transactionDate = new Date();

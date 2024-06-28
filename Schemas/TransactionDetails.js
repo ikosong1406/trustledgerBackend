@@ -1,4 +1,3 @@
-// transaction.js
 const mongoose = require("mongoose");
 
 const transactionSchema = new mongoose.Schema({
@@ -13,11 +12,9 @@ const transactionSchema = new mongoose.Schema({
   },
   name: {
     type: String,
-    required: true,
   },
   lname: {
     type: String,
-    required: true,
   },
   profit: {
     type: Number,
