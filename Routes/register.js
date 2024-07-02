@@ -2,9 +2,8 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
-const { generateOTP, mailTransport } = require("../utils/mail");
-const VerificationToken = require("../Schemas/VerificationToken");
-const { verifyCode } = require("../Templates/verifyCode");
+const { sendMail } = require("../utils/mail");
+const { Welcome } = require("../Templates/welcome");
 require("../Schemas/UserDetails");
 
 const User = mongoose.model("UserInfo");
@@ -29,15 +28,12 @@ router.post("/", async (req, res) => {
       role: role,
     });
 
-    // mailTransport().sendMail({
-    //   from: "support@trustleger.com",
-    //   to: newUser.email,
-    //   subject: "Verify Your Email Account",
-    //   html: verifyCode(
-    //     "Congratulations! Your account has been successfully verified. You are now part of our amazing community",
-    //     "Start exploring all the features and functionalities of our app by clicking the button below:"
-    //   ),
-    // });
+    sendMail(
+      newUser.email,
+      "Welcome to Trustleger",
+      "",
+      Welcome(newUser.firstname)
+    );
 
     return res.status(200).json({
       status: "ok",
