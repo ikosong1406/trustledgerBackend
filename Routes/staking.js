@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 require("../Schemas/UserDetails");
+const { sendMail } = require("../utils/mail");
+const { Stake } = require("../Templates/Stake");
 
 const User = mongoose.model("UserInfo");
 
@@ -43,6 +45,13 @@ router.post("/", async (req, res) => {
 
     user.staking.push(newStake);
     await user.save();
+
+    sendMail(
+      user.email,
+      "Fixed Capital Confirmation",
+      "",
+      Stake(user.firstname, newStake.amount, newStake.days, newStake.days)
+    );
 
     res.json({ msg: "Staking initiated successfully", stake: newStake });
   } catch (err) {

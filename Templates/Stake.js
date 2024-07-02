@@ -1,9 +1,9 @@
-module.exports.Secure = (firstName) => {
+module.exports.Stake = (firstName, amount, days, rate) => {
   return `<!DOCTYPE html>
 <html>
 <head>
   <style>
-   .container {
+    .container {
       font-family: Arial, sans-serif;
       margin: 0 auto;
       padding: 20px;
@@ -40,15 +40,20 @@ module.exports.Secure = (firstName) => {
   <div class="container">
     <div class="content">
       <p>Hi ${firstName},</p>
-      <p>We are pleased to inform you that your security phrase has been securely stored in our system. Your assets are now protected with an additional layer of security.</p>
-      <p>At <strong>Trustleger</strong>, we prioritize the safety and security of your assets. You can rest assured that your financial information is well-protected.</p>
-      <p>Thank you for trusting us with your security needs. If you have any questions or need further assistance, feel free to reach out to our support team at <a href="mailto:support@trustleger.com">support@trustleger.com</a>.</p>
-      <p>Stay secure,</p>
+      <p>We are pleased to inform you that your fixed capital investment has been successfully recorded. Below are the details of your investment:</p>
+      <ul>
+        <li><strong>Amount:</strong> $ ${amount}</li>
+        <li><strong>Days:</strong> ${days}</li>
+        <li><strong>Rate of Profit Increase:</strong> ${rate}%</li>
+      </ul>
+      <p>Thank you for trusting Trustleger with your investment. We are committed to helping you achieve your financial goals.</p>
+      <p>If you have any questions or need further assistance, feel free to reach out to our support team at <a href="mailto:support@trustleger.com">support@trustleger.com</a>.</p>
+      <p>Best regards,</p>
       <p>The Trustleger Team</p>
     </div>
     <div class="footer">
       <p>For more information, visit our <a href="https://trustleger.com">website</a> or contact us at <a href="mailto:support@trustleger.com">support@trustleger.com</a>.</p>
-      <a href="https://trustleger.com/login" class="button">Go to Dashboard</a>
+      <a href="https://trustleger.com//login" class="button">Go to Dashboard</a>
     </div>
   </div>
 </body>
