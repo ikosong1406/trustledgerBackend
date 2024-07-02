@@ -38,9 +38,6 @@ module.exports.Transactions = (firstName, amount, type) => {
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <h1>Transaction Confirmation</h1>
-    </div>
     <div class="content">
       <p>Hi ${firstName},</p>
       <p>We are pleased to inform you that your transaction has been successfully processed. Below are the details of your transaction:</p>
