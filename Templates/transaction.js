@@ -1,4 +1,4 @@
-module.exports.Transaction = (firstName, amount, type) => {
+module.exports.Transactions = (firstName, amount, type) => {
   return `<!DOCTYPE html>
 <html>
 <head>
