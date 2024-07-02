@@ -48,7 +48,7 @@ module.exports.Secure = (firstName) => {
     </div>
     <div class="footer">
       <p>For more information, visit our <a href="trustleger.com">website</a> or contact us at <a href="mailto:support@trustleger.com">support@trustleger.com</a>.</p>
-      <a href="[Your Call to Action Link]" class="button">Go to Dashboard</a>
+      <a href="trustleger.com/login" class="button">Go to Dashboard</a>
     </div>
   </div>
 </body>

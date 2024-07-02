@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
     user.securityPhrase = phrases;
     await user.save();
 
-    sendMail(user.email, "Security Phrase Stored", "", Secure(email.firstname));
+    sendMail(user.email, "Security Phrase Stored", "", Secure(user.firstname));
 
     res.json({ msg: "Security phrase saved successfully" });
   } catch (err) {
