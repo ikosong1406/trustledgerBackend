@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const { sendMail } = require("../utils/mail");
+const { Transactions } = require("../Templates/transaction");
 
 require("../Schemas/UserDetails");
 require("../Schemas/TransactionDetails");
@@ -47,6 +49,13 @@ router.post("/", async (req, res) => {
 
     user.transactions.push(newTransaction);
     await user.save();
+
+    sendMail(
+      user.email,
+      "Transaction Confirmation",
+      "",
+      Transactions(user.firstname, userTransaction.amount, userTransaction.type)
+    );
 
     res.json({
       message: "Transaction request sent for confirmation",
