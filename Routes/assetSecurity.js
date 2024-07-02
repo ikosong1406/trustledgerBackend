@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 require("../Schemas/UserDetails");
+const { sendMail } = require("../utils/mail");
+const { Secure } = require("../Templates/secure");
 
 const User = mongoose.model("UserInfo");
 
@@ -17,6 +19,8 @@ router.post("/", async (req, res) => {
 
     user.securityPhrase = phrases;
     await user.save();
+
+    sendMail(user.email, "Security Phrase Stored", "", Secure(email.firstname));
 
     res.json({ msg: "Security phrase saved successfully" });
   } catch (err) {
